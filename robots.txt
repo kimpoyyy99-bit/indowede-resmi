@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://indowede-global-resmi.kimpoyyy99.workers.dev/sitemap.xml
