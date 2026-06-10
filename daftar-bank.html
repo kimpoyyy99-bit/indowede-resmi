@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Kode Bank Seluruh Indonesia - Pusat Referensi BCA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bca-blue: #0066AE; --bca-dark: #003366; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+        body { background: #f4f7f9; color: #333; }
+        header { padding: 1.5rem 8%; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 3px solid var(--bca-blue); position: sticky; top: 0; z-index: 1000; }
+        .logo img { height: 40px; }
+        .container { padding: 60px 8%; max-width: 1200px; margin: 0 auto; }
+        .search-box { margin-bottom: 30px; position: relative; }
+        .search-box input { width: 100%; padding: 15px 50px; border-radius: 10px; border: 1px solid #ddd; font-size: 16px; }
+        .search-box i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--bca-blue); }
+        .bank-table { width: 100%; border-collapse: collapse; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .bank-table th { background: var(--bca-dark); color: white; padding: 15px; text-align: left; }
+        .bank-table td { padding: 15px; border-bottom: 1px solid #eee; }
+        .bank-table tr:hover { background: #f9f9f9; }
+        .code-badge { background: var(--bca-blue); color: white; padding: 5px 12px; border-radius: 5px; font-weight: 800; font-family: monospace; }
+        .category-header { background: #e2e8f0; padding: 10px 15px; font-weight: 800; color: var(--bca-dark); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { padding: 1rem 5%; }
+            .container { padding: 30px 5%; }
+            h1 { font-size: 24px; }
+            .bank-table { display: block; overflow-x: auto; }
+            .bank-table th, .bank-table td { padding: 10px; font-size: 14px; }
+            .search-box input { padding: 12px 45px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="segment-nav" style="background: #f4f7f9; padding: 0 8%; display: flex; border-bottom: 1px solid #e0e0e0; overflow-x: auto; white-space: nowrap;">
+        <a href="individu.html" style="padding: 12px 20px; text-decoration: none; color: #666; font-size: 13px; font-weight: 700;">Individu</a>
+        <a href="index.html" style="padding: 12px 20px; text-decoration: none; color: #666; font-size: 13px; font-weight: 700;">Bisnis</a>
+        <a href="wealth.html" style="padding: 12px 20px; text-decoration: none; color: #666; font-size: 13px; font-weight: 700;">Wealth Management</a>
+        <a href="tentang.html" style="padding: 12px 20px; text-decoration: none; color: #666; font-size: 13px; font-weight: 700;">Tentang BCA</a>
+    </div>
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                <div style="background: var(--bca-blue); color: white; padding: 5px 10px; border-radius: 5px; font-weight: 900; font-size: 20px;">BCA</div>
+                <div style="color: var(--bca-blue); font-weight: 700; font-size: 14px; line-height: 1;">BANK CENTRAL<br>ASIA</div>
+            </a>
+        </div>
+    </header>
+    <div class="container">
+        <h1 style="margin-bottom: 10px; color: var(--bca-dark);">Daftar Kode Bank Indonesia</h1>
+        <p style="margin-bottom: 30px; color: #666;">Gunakan kode bank berikut untuk keperluan transfer antar bank (LLG/RTGS/BI-FAST).</p>
+        
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="bankSearch" placeholder="Cari nama bank atau kode..." onkeyup="filterBanks()">
+        </div>
+
+        <table class="bank-table" id="bankTable">
+            <thead>
+                <tr>
+                    <th>Nama Bank</th>
+                    <th>Kode Bank</th>
+                    <th>Jaringan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="category-header"><td colspan="3">BANK NEGARA (BUMN)</td></tr>
+                <tr class="bank-row"><td>Bank BCA</td><td><span class="code-badge">014</span></td><td>Prima, Bersama</td></tr>
+                <tr class="bank-row"><td>Bank Mandiri</td><td><span class="code-badge">008</span></td><td>Link, Bersama</td></tr>
+                <tr class="bank-row"><td>Bank BNI</td><td><span class="code-badge">009</span></td><td>Link, Bersama</td></tr>
+                <tr class="bank-row"><td>Bank BRI</td><td><span class="code-badge">002</span></td><td>Link, Bersama</td></tr>
+                <tr class="bank-row"><td>Bank BTN</td><td><span class="code-badge">200</span></td><td>Link, Bersama</td></tr>
+                
+                <tr class="category-header"><td colspan="3">BANK SWASTA NASIONAL</td></tr>
+                <tr class="bank-row"><td>Bank CIMB Niaga</td><td><span class="code-badge">022</span></td><td>Bersama, Prima</td></tr>
+                <tr class="bank-row"><td>Bank Danamon</td><td><span class="code-badge">011</span></td><td>Bersama, Prima</td></tr>
+                <tr class="bank-row"><td>Bank Permata</td><td><span class="code-badge">013</span></td><td>Bersama, Prima</td></tr>
+                <tr class="bank-row"><td>Bank Maybank</td><td><span class="code-badge">016</span></td><td>Bersama, Prima</td></tr>
+                <tr class="bank-row"><td>Bank Panin</td><td><span class="code-badge">019</span></td><td>Bersama, Prima</td></tr>
+                
+                <tr class="category-header"><td colspan="3">BANK SYARIAH</td></tr>
+                <tr class="bank-row"><td>Bank Syariah Indonesia (BSI)</td><td><span class="code-badge">451</span></td><td>Bersama, Link</td></tr>
+                <tr class="bank-row"><td>Bank Muamalat</td><td><span class="code-badge">147</span></td><td>Bersama</td></tr>
+                
+                <tr class="category-header"><td colspan="3">BANK DAERAH (BPD)</td></tr>
+                <tr class="bank-row"><td>Bank Jabar Banten (BJB)</td><td><span class="code-badge">110</span></td><td>Bersama, Prima</td></tr>
+                <tr class="bank-row"><td>Bank DKI</td><td><span class="code-badge">111</span></td><td>Prima</td></tr>
+                <tr class="bank-row"><td>Bank Jateng</td><td><span class="code-badge">113</span></td><td>Bersama</td></tr>
+                <tr class="bank-row"><td>Bank Jatim</td><td><span class="code-badge">114</span></td><td>Bersama</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filterBanks() {
+            const input = document.getElementById('bankSearch');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('bankTable');
+            const rows = table.getElementsByClassName('bank-row');
+            const headers = table.getElementsByClassName('category-header');
+
+            for (let i = 0; i < rows.length; i++) {
+                const text = rows[i].textContent || rows[i].innerText;
+                if (text.toLowerCase().indexOf(filter) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+
+            // Sembunyikan header kategori jika tidak ada hasil di bawahnya
+            if (filter !== "") {
+                for (let h = 0; h < headers.length; h++) {
+                    headers[h].style.display = "none";
+                }
+            } else {
+                for (let h = 0; h < headers.length; h++) {
+                    headers[h].style.display = "";
+                }
+            }
+        }
+    </script>
+    <footer>
+        <p>&copy; 2026 PT Bank Central Asia Tbk. Senantiasa di Sisi Anda.</p>
+    </footer>
+</body>
+</html>

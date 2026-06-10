@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Transfer BCA - Layanan Prioritas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bca-blue: #0066AE; --bca-dark: #003366; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+        body { background: #f4f7f9; line-height: 1.6; }
+        header { padding: 1.5rem 8%; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 3px solid var(--bca-blue); }
+        .logo img { height: 40px; }
+        .guide-container { padding: 60px 8%; max-width: 1000px; margin: 0 auto; }
+        .guide-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .guide-header { text-align: center; margin-bottom: 40px; }
+        .guide-header h1 { color: var(--bca-dark); font-size: 32px; }
+        .bca-icon { font-size: 60px; color: var(--bca-blue); margin-bottom: 20px; }
+        .method-tabs { display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #eee; }
+        .tab { padding: 10px 20px; cursor: pointer; font-weight: 700; color: #666; border-bottom: 3px solid transparent; }
+        .tab.active { color: var(--bca-blue); border-bottom-color: var(--bca-blue); }
+        .step-item { margin-bottom: 25px; padding-left: 20px; border-left: 4px solid var(--bca-blue); }
+        .step-item strong { color: var(--bca-dark); display: block; margin-bottom: 5px; }
+        footer { background: #1a1a1a; color: white; padding: 40px 8%; text-align: center; margin-top: 60px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { padding: 1rem 5%; }
+            .guide-container { padding: 30px 5%; }
+            .guide-card { padding: 25px; border-radius: 15px; }
+            .guide-header h1 { font-size: 24px; }
+            .method-tabs { flex-wrap: wrap; gap: 5px; }
+            .tab { padding: 8px 15px; font-size: 14px; flex: 1; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                <div style="background: var(--bca-blue); color: white; padding: 5px 10px; border-radius: 5px; font-weight: 900; font-size: 20px;">BCA</div>
+                <div style="color: var(--bca-blue); font-weight: 700; font-size: 14px; line-height: 1;">BANK CENTRAL<br>ASIA</div>
+            </a>
+        </div>
+    </header>
+    <div class="guide-container">
+        <div class="guide-card">
+            <div class="guide-header">
+                <i class="fas fa-university bca-icon"></i>
+                <h1>Panduan Transfer Bank BCA</h1>
+                <p>Gunakan layanan Virtual Account atau Transfer Manual untuk proses cepat.</p>
+            </div>
+            <div class="method-tabs">
+                <div class="tab active">m-BCA</div>
+                <div class="tab">KlikBCA</div>
+                <div class="tab">ATM BCA</div>
+            </div>
+            <div class="steps-container">
+                <div class="step-item">
+                    <strong>1. Login m-BCA</strong>
+                    <p>Buka aplikasi BCA Mobile, pilih m-BCA dan masukkan kode akses Anda.</p>
+                </div>
+                <div class="step-item">
+                    <strong>2. Pilih m-Transfer</strong>
+                    <p>Pilih menu "m-Transfer" lalu pilih "BCA Virtual Account" atau "Antar Rekening".</p>
+                </div>
+                <div class="step-item">
+                    <strong>3. Masukkan Data</strong>
+                    <p>Masukkan nomor rekening tujuan atau nomor Virtual Account yang tertera di menu deposit website.</p>
+                </div>
+                <div class="step-item">
+                    <strong>4. Konfirmasi & PIN</strong>
+                    <p>Periksa kembali nominal dan nama tujuan, lalu masukkan PIN m-BCA Anda.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 PT Bank Central Asia Tbk. Senantiasa di Sisi Anda.</p>
+    </footer>
+</body>
+</html>

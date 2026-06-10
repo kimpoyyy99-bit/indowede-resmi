@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Deposit QRIS - Pusat Transaksi BCA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bca-blue: #0066AE; --bca-dark: #003366; --white: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+        body { background: #f4f7f9; color: #333; line-height: 1.6; }
+        header { padding: 1.5rem 8%; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 3px solid var(--bca-blue); position: sticky; top: 0; z-index: 1000; }
+        .logo img { height: 40px; }
+        .guide-container { padding: 60px 8%; max-width: 1000px; margin: 0 auto; }
+        .guide-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .guide-header { text-align: center; margin-bottom: 40px; }
+        .guide-header h1 { color: var(--bca-dark); font-size: 32px; margin-bottom: 10px; }
+        .qris-icon { font-size: 60px; color: #E11D48; margin-bottom: 20px; }
+        .step-list { list-style: none; counter-reset: my-counter; }
+        .step-item { position: relative; padding-left: 60px; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .step-item::before { content: counter(my-counter); counter-increment: my-counter; position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: var(--bca-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; }
+        .step-item h3 { color: var(--bca-dark); margin-bottom: 10px; }
+        .security-note { background: #FFF1F2; padding: 20px; border-radius: 10px; border-left: 5px solid #E11D48; margin-top: 30px; }
+        footer { background: #1a1a1a; color: white; padding: 40px 8%; text-align: center; margin-top: 60px; }
+        .btn-back { display: inline-block; margin-bottom: 20px; text-decoration: none; color: var(--bca-blue); font-weight: 700; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { padding: 1rem 5%; }
+            .guide-container { padding: 30px 5%; }
+            .guide-card { padding: 25px; border-radius: 15px; }
+            .guide-header h1 { font-size: 24px; }
+            .step-item { padding-left: 50px; }
+            .step-item::before { width: 35px; height: 35px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                <div style="background: var(--bca-blue); color: white; padding: 5px 10px; border-radius: 5px; font-weight: 900; font-size: 20px;">BCA</div>
+                <div style="color: var(--bca-blue); font-weight: 700; font-size: 14px; line-height: 1;">BANK CENTRAL<br>ASIA</div>
+            </a>
+        </div>
+    </header>
+    <div class="guide-container">
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+        <div class="guide-card">
+            <div class="guide-header">
+                <i class="fas fa-qrcode qris-icon"></i>
+                <h1>Panduan Deposit via QRIS</h1>
+                <p>Metode deposit instan otomatis tanpa perlu konfirmasi manual.</p>
+            </div>
+            <div class="step-list">
+                <div class="step-item">
+                    <h3>Pilih Menu Deposit</h3>
+                    <p>Masuk ke akun Anda, pilih menu "Deposit" dan pilih metode pembayaran "QRIS".</p>
+                </div>
+                <div class="step-item">
+                    <h3>Masukkan Nominal</h3>
+                    <p>Tentukan jumlah saldo yang ingin Anda isi (Minimal IDR 10.000).</p>
+                </div>
+                <div class="step-item">
+                    <h3>Scan Kode QR</h3>
+                    <p>Simpan atau screenshot kode QR yang muncul di layar, lalu buka aplikasi perbankan (m-BCA) atau e-wallet (Dana/OVO/Gopay) Anda.</p>
+                </div>
+                <div class="step-item">
+                    <h3>Selesaikan Pembayaran</h3>
+                    <p>Lakukan pembayaran sesuai nominal. Saldo akan masuk ke akun Anda secara otomatis dalam hitungan detik.</p>
+                </div>
+            </div>
+            <div class="security-note">
+                <p><strong><i class="fas fa-shield-alt"></i> Tips Keamanan:</strong> Pastikan Anda menggunakan kode QR yang dihasilkan secara resmi oleh sistem kami. Kode QR hanya berlaku untuk satu kali transaksi.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 PT Bank Central Asia Tbk. Seluruh Hak Cipta Dilindungi.</p>
+    </footer>
+</body>
+</html>

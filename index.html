@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bisnis - PT Bank Central Asia Tbk</title>
+    <meta name="description" content="Solusi perbankan bisnis terintegrasi. Dari penerimaan, pembayaran, hingga pendanaan bisnis untuk kemajuan usaha Anda.">
+    
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bca-blue: #0066AE;
+            --bca-dark: #003366;
+            --bca-gray: #F4F7F9;
+            --text-main: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-main);
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Top Segment Navigation */
+        .segment-nav {
+            background: var(--bca-gray);
+            padding: 0 8%;
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .segment-nav::-webkit-scrollbar { display: none; }
+
+        .segment-nav a {
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 13px;
+            font-weight: 700;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .segment-nav a.active {
+            background: var(--white);
+            color: var(--bca-blue);
+            border-left: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+            margin-bottom: -1px;
+        }
+
+        .segment-nav a.highlight-nav {
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+            border-radius: 4px;
+            margin: 5px;
+            padding: 7px 15px;
+        }
+
+        /* Main Header */
+        header {
+            padding: 1rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 100vw;
+        }
+
+        .logo { flex-shrink: 0; }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--bca-dark);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .btn-search { color: var(--bca-blue); font-size: 18px; cursor: pointer; }
+        
+        .btn-klikbca {
+            background: var(--bca-blue);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        /* Hero Carousel Style */
+        .hero-business {
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?auto=format&fit=crop&w=1600&q=80') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(0,51,102,0.8) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 550px;
+        }
+
+        .hero-content h1 { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+        .hero-content p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--bca-blue);
+            padding: 12px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 800;
+            display: inline-block;
+        }
+
+        /* Kurs & Bank Status Widget Floating */
+        .utility-bar {
+            background: var(--white);
+            margin: -40px 8% 0;
+            position: relative;
+            z-index: 10;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            display: flex;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .utility-section {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .kurs-display {
+            border-right: 1px solid #eee;
+            flex: 1.5;
+        }
+
+        .bank-status-display {
+            flex: 1;
+            background: #f8f9fa;
+        }
+
+        .status-dot {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .status-online { background-color: #28a745; box-shadow: 0 0 5px #28a745; }
+        .status-offline { background-color: #dc3545; }
+
+        .bank-mini-item { font-size: 12px; font-weight: 700; margin-right: 15px; }
+
+        /* Calculator Section */
+        .calc-section {
+            padding: 80px 8%;
+            background: linear-gradient(135deg, var(--bca-dark) 0%, var(--bca-blue) 100%);
+            color: white;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .calc-container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            flex: 1;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .calc-input-group { margin-bottom: 20px; }
+        .calc-input-group label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 14px; }
+        .calc-input-group input, .calc-input-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: white;
+            color: var(--bca-dark);
+            font-weight: 700;
+        }
+
+        .calc-result {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .result-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .total-amount { font-size: 24px; font-weight: 800; color: #ffcc00; }
+
+        /* WhatsApp Widget */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .wa-float:hover { transform: scale(1.1); }
+
+        /* Search Overlay */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 30, 30, 0.95); /* Darker overlay like the image */
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .search-top-bar {
+            width: 100%;
+            padding: 15px 8%;
+            background: rgba(0,0,0,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-top-bar a { color: white; text-decoration: underline; }
+
+        .search-main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .search-container-full {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid rgba(255,255,255,0.8);
+        }
+
+        .search-container-full input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: clamp(30px, 6vw, 56px);
+            padding: 20px 0;
+            outline: none;
+            font-weight: 300; /* Lighter weight like the image */
+        }
+
+        .search-container-full input::placeholder { color: rgba(255,255,255,0.6); }
+
+        .search-icon-large {
+            color: white;
+            font-size: clamp(24px, 4vw, 36px);
+            margin-left: 20px;
+        }
+
+        .close-search {
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .close-search:hover { transform: rotate(90deg); }
+
+        /* Business Solutions Grid */
+        .section-title {
+            text-align: center;
+            padding: 80px 8% 40px;
+        }
+
+        .section-title h2 { font-size: 32px; color: var(--bca-dark); font-weight: 800; }
+        .section-title p { color: var(--text-light); margin-top: 10px; }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            padding: 0 8% 80px;
+        }
+
+        .solution-card {
+            background: var(--bca-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+            height: 350px;
+        }
+
+        .solution-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .solution-card:hover img { transform: scale(1.1); }
+
+        .card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(transparent, rgba(0,51,102,0.9));
+            color: white;
+        }
+
+        .card-info h3 { font-size: 20px; margin-bottom: 5px; }
+        .card-info p { font-size: 13px; opacity: 0.8; }
+
+        /* Features Section */
+        .business-features {
+            background: var(--bca-gray);
+            padding: 80px 8%;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .features-img { flex: 1; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .features-img img { width: 100%; display: block; }
+
+        .features-text { flex: 1.2; }
+        .features-text h2 { font-size: 36px; color: var(--bca-dark); margin-bottom: 25px; }
+        
+        .feature-list { list-style: none; }
+        .feature-item { 
+            display: flex; 
+            gap: 20px; 
+            margin-bottom: 25px; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+        .feature-item:hover { box-shadow: 0 10px 30px rgba(0,102,174,0.1); }
+        .feature-item i { font-size: 28px; color: var(--bca-blue); }
+        .feature-item h4 { color: var(--bca-dark); margin-bottom: 5px; }
+        .feature-item p { font-size: 14px; color: var(--text-light); }
+
+        /* Footer Corporate */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 80px 8% 40px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo img { height: 40px; margin-bottom: 25px; filter: brightness(0) invert(1); }
+        .footer-links h4 { color: white; margin-bottom: 25px; font-size: 16px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #999; text-decoration: none; font-size: 14px; transition: var(--transition); }
+        .footer-links a:hover { color: var(--bca-blue); padding-left: 5px; }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .social-icons { display: flex; gap: 20px; font-size: 20px; }
+        .social-icons i { cursor: pointer; transition: var(--transition); }
+        .social-icons i:hover { color: var(--bca-blue); }
+
+        /* Responsive Mobile */
+        @media (max-width: 1024px) {
+            .solution-grid { grid-template-columns: repeat(2, 1fr); }
+            .business-features { flex-direction: column; }
+            .utility-bar { flex-direction: column; margin: -20px 5% 0; }
+            .kurs-display { border-right: none; border-bottom: 1px solid #eee; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 5%; gap: 10px; flex-wrap: wrap; }
+            .logo { width: 100%; justify-content: center; margin-bottom: 10px; }
+            .logo div:last-child { display: block; font-size: 12px; } 
+            .btn-klikbca { padding: 8px 12px; font-size: 12px; order: 2; }
+            .btn-search { font-size: 20px; order: 1; }
+            .header-actions { width: 100%; justify-content: center; gap: 20px; }
+            
+            nav { display: block; width: 100%; order: 3; margin-top: 10px; }
+            nav ul { justify-content: center; gap: 10px; flex-wrap: wrap; }
+            nav ul li a { font-size: 11px; padding: 5px; }
+
+            .hero-business { height: auto; min-height: 450px; padding: 60px 5%; text-align: center; justify-content: center; background-position: center; }
+            .hero-overlay { background: rgba(0, 51, 102, 0.7); }
+            .hero-content { max-width: 100%; }
+            .hero-content h1 { font-size: 32px; line-height: 1.2; margin-bottom: 15px; }
+            .hero-content p { font-size: 16px; margin-bottom: 25px; }
+            .hero-content div { flex-direction: column; align-items: center; width: 100%; }
+            .btn-white { width: 100%; max-width: 280px; margin-bottom: 10px; padding: 15px; text-align: center; }
+            
+            .solution-grid { grid-template-columns: 1fr; padding: 0 5% 40px; gap: 15px; }
+            .solution-card { height: 250px; }
+            .calc-section { flex-direction: column; padding: 40px 5%; gap: 20px; }
+            .calc-container { width: 100%; padding: 20px; box-sizing: border-box; }
+            .utility-bar { margin: -30px 5% 20px; width: 90%; flex-direction: column; }
+            .utility-section { padding: 15px; flex-direction: column; text-align: center; gap: 10px; }
+            .kurs-display { display: grid; grid-template-columns: 1fr; gap: 15px; border-right: none; border-bottom: 1px solid #eee; }
+            .kurs-item { border: none !important; padding: 10px 0 !important; }
+            .bank-status-display { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+            .bank-mini-item { margin: 0; font-size: 11px; }
+            .footer-top { grid-template-columns: 1fr; padding: 30px 5%; gap: 25px; }
+            .section-title { padding: 30px 5% 15px; }
+            .section-title h2 { font-size: 24px; }
+            .business-features { padding: 30px 5%; }
+            .features-text h2 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="segment-nav">
+        <a href="individu.html">Individu</a>
+        <a href="index.html" class="active">Bisnis</a>
+        <a href="wealth.html">Wealth Management</a>
+        <a href="tentang.html">Tentang BCA</a>
+        <a href="indowede.html" class="highlight-nav">🔥 INDOWEDE</a>
+    </div>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                <div style="background: var(--bca-blue); color: white; padding: 5px 10px; border-radius: 5px; font-weight: 900; font-size: 20px;">BCA</div>
+                <div style="color: var(--bca-blue); font-weight: 700; font-size: 14px; line-height: 1;">BANK CENTRAL<br>ASIA</div>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="indowede.html" style="color: #e74c3c; font-weight: 800;">🔥 INDOWEDE</a></li>
+                <li><a href="produk.html">Produk</a></li>
+                <li><a href="kontak.html">Layanan</a></li>
+                <li><a href="produk.html">Solusi</a></li>
+                <li><a href="kontak.html">Hubungi Kami</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <i class="fas fa-search btn-search" onclick="toggleSearch()"></i>
+            <a href="javascript:void(0)" onclick="alert('Mengarahkan ke KlikBCA Bisnis...')" class="btn-klikbca">KlikBCA Bisnis</a>
+        </div>
+    </header>
+
+    <div id="searchOverlay" class="search-overlay">
+        <div class="search-top-bar">
+            <span>Dengan mengakses situs ini, Anda telah menyetujui penggunaan <a href="#">cookies</a> dari kami.</span>
+            <i class="fas fa-times close-search" onclick="toggleSearch()"></i>
+        </div>
+        <div class="search-main-content">
+            <div class="search-container-full">
+                <input type="text" id="searchInput" placeholder="Cari di sini?" onkeyup="handleSearch(event)">
+                <i class="fas fa-search search-icon-large"></i>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero-business">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Solusi Terintegrasi Untuk Bisnis Anda</h1>
+            <p>Kelola arus kas, pendanaan, hingga ekspansi pasar dengan dukungan teknologi perbankan tercanggih di Indonesia.</p>
+            <div style="display: flex; gap: 15px;">
+                <a href="#" class="btn-white">Mulai Eksplorasi</a>
+                <a href="indowede.html" class="btn-white" style="background: #e74c3c; color: white; border: none;">Daftar INDOWEDE</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="utility-bar">
+        <div class="utility-section kurs-display">
+            <div class="kurs-item" style="flex: 1;">
+                <span>USD - e-Rate</span>
+                <strong id="usd-rate">16.155 / 16.175</strong>
+            </div>
+            <div class="kurs-item" style="flex: 1;">
+                <span>SGD - e-Rate</span>
+                <strong id="sgd-rate">12.010 / 12.040</strong>
+            </div>
+            <div id="kurs-update" style="position: absolute; bottom: 5px; left: 25px; font-size: 9px; color: #999; font-weight: 600;">Terakhir diperbarui: --:--</div>
+        </div>
+        <div class="utility-section bank-status-display">
+            <div class="bank-mini-item"><span class="status-dot status-online"></span> BCA</div>
+            <div class="bank-mini-item"><span class="status-dot status-online"></span> MANDIRI</div>
+            <div class="bank-mini-item"><span class="status-dot status-online"></span> BNI</div>
+            <div class="bank-mini-item"><span class="status-dot status-offline"></span> BRI</div>
+        </div>
+    </div>
+
+    <div class="section-title">
+        <h2>Pilih Solusi Bisnis Anda</h2>
+        <p>Kami hadirkan berbagai kemudahan untuk setiap skala usaha.</p>
+    </div>
+
+    <section class="solution-grid">
+        <!-- Metode Pembayaran Utama (SEO & GEO Boost) -->
+        <div class="solution-card" onclick="window.location.href='deposit-qris.html'">
+            <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80" alt="Deposit QRIS">
+            <div class="card-info">
+                <span class="category-tag" style="font-size: 10px; margin-bottom: 5px;">Tercepat</span>
+                <h3>QRIS All Payment</h3>
+                <p>Deposit instan via BCA, OVO, Dana, dan LinkAja tanpa antre.</p>
+            </div>
+        </div>
+        <div class="solution-card" onclick="window.location.href='deposit-bca.html'">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Transfer BCA">
+            <div class="card-info">
+                <span class="category-tag" style="font-size: 10px; margin-bottom: 5px;">Favorit</span>
+                <h3>Virtual Account BCA</h3>
+                <p>Layanan deposit 24 jam dengan verifikasi otomatis detik itu juga.</p>
+            </div>
+        </div>
+        <div class="solution-card" onclick="window.location.href='deposit-lainnya.html'">
+            <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600&q=80" alt="Bank Mandiri BNI">
+            <div class="card-info">
+                <h3>Mandiri & BNI Online</h3>
+                <p>Panduan visual deposit lengkap via Livin' Mandiri dan BNI Mobile.</p>
+            </div>
+        </div>
+        <div class="solution-card" onclick="window.location.href='daftar-bank.html'">
+            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80" alt="Semua Bank">
+            <div class="card-info">
+                <h3>Daftar Kode Bank</h3>
+                <p>Referensi lengkap kode bank seluruh Indonesia (014, 008, 009, dll).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kalkulator Deposit Interaktif -->
+    <section class="calc-section">
+        <div style="flex: 1.2;">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">Kalkulator Simulasi Deposit</h2>
+            <p style="opacity: 0.8; margin-bottom: 30px;">Hitung estimasi saldo yang akan Anda terima termasuk bonus promosi yang sedang berlangsung secara transparan.</p>
+            <div class="feature-item" style="background: rgba(255,255,255,0.1); border: none;">
+                <i class="fas fa-shield-alt" style="color: #ffcc00;"></i>
+                <div style="color: white;">
+                    <h4>Aman & Transparan</h4>
+                    <p style="color: #eee;">Tidak ada biaya tersembunyi dalam setiap transaksi deposit Anda.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="calc-container">
+            <div class="calc-input-group">
+                <label>Jumlah Deposit (IDR)</label>
+                <input type="number" id="depo-amount" placeholder="Contoh: 50000" oninput="calculateBonus()">
+            </div>
+            <div class="calc-input-group">
+                <label>Pilih Promo Bonus</label>
+                <select id="promo-select" onchange="calculateBonus()">
+                    <option value="0">Tanpa Bonus</option>
+                    <option value="0.1">Bonus New Member 10%</option>
+                    <option value="0.05">Bonus Deposit Harian 5%</option>
+                    <option value="0.2">Special Weekend 20%</option>
+                </select>
+            </div>
+            
+            <div class="calc-result">
+                <div class="result-item">
+                    <span>Bonus Didapat:</span>
+                    <span id="bonus-val">IDR 0</span>
+                </div>
+                <div class="result-item" style="margin-top: 15px;">
+                    <span style="font-weight: 700;">TOTAL SALDO DITERIMA:</span>
+                </div>
+                <div class="total-amount" id="total-val">IDR 0</div>
+            </div>
+            <button onclick="window.location.href='deposit-qris.html'" style="width: 100%; padding: 15px; margin-top: 25px; border: none; border-radius: 8px; background: #ffcc00; color: var(--bca-dark); font-weight: 800; cursor: pointer;">LANJUT DEPOSIT SEKARANG</button>
+        </div>
+    </section>
+
+    <section class="business-features">
+        <div class="features-img">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="Merchant Solutions">
+        </div>
+        <div class="features-text">
+            <h2>Layanan Merchant Terdepan</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <i class="fas fa-qrcode"></i>
+                    <div>
+                        <h4>QRIS Tap NFC</h4>
+                        <p>Teknologi pembayaran terbaru yang memudahkan transaksi hanya dengan sekali tap di EDC BCA.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <div>
+                        <h4>Merchant Reporting</h4>
+                        <p>Pantau laporan transaksi secara real-time melalui aplikasi Merchant BCA yang user-friendly.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-headset"></i>
+                    <div>
+                        <h4>Dukungan 24/7</h4>
+                        <p>Tim spesialis kami siap membantu operasional bisnis Anda kapan saja melalui Merchant Hotline.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/628123456789" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="https://www.bca.co.id/-/media/Feature/Header/Header-Logo/logo-bca.png" alt="BCA Footer">
+                <p>PT Bank Central Asia Tbk berizin dan diawasi oleh Otoritas Jasa Keuangan (OJK) serta merupakan peserta penjaminan LPS.</p>
+            </div>
+            <div class="footer-links">
+                <h4>PRODUK</h4>
+                <ul>
+                    <li><a href="#">Simpanan Bisnis</a></li>
+                    <li><a href="#">Pinjaman Bisnis</a></li>
+                    <li><a href="#">Kartu Kredit Korporasi</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>LAYANAN</h4>
+                <ul>
+                    <li><a href="#">KlikBCA Bisnis</a></li>
+                    <li><a href="#">BCA API</a></li>
+                    <li><a href="#">Merchant BCA</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>HUBUNGI KAMI</h4>
+                <ul>
+                    <li><a href="#">Halo BCA 1500888</a></li>
+                    <li><a href="#">Lokasi Cabang</a></li>
+                    <li><a href="#">Customer Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PT Bank Central Asia Tbk. Senantiasa di Sisi Anda.</p>
+            <div class="social-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        async function fetchRealTimeRates() {
+            try {
+                // Menggunakan API publik gratis untuk mendapatkan kurs IDR
+                const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+                const data = await response.json();
+                
+                const usdToIdr = data.rates.IDR;
+                const sgdToUsd = data.rates.SGD;
+                const sgdToIdr = usdToIdr / sgdToUsd;
+
+                // Simulasi Spread Perbankan (Beli sedikit lebih rendah, Jual sedikit lebih tinggi)
+                const usdBuy = Math.floor(usdToIdr - 50).toLocaleString('id-ID');
+                const usdSell = Math.floor(usdToIdr + 50).toLocaleString('id-ID');
+                const sgdBuy = Math.floor(sgdToIdr - 30).toLocaleString('id-ID');
+                const sgdSell = Math.floor(sgdToIdr + 30).toLocaleString('id-ID');
+
+                document.getElementById('usd-rate').innerText = `${usdBuy} / ${usdSell}`;
+                document.getElementById('sgd-rate').innerText = `${sgdBuy} / ${sgdSell}`;
+                
+                const now = new Date();
+                document.getElementById('kurs-update').innerText = `Terakhir diperbarui: ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')} WIB`;
+            } catch (error) {
+                console.error('Gagal mengambil kurs real-time:', error);
+                // Fallback: Simulasi pergerakan kecil jika API gagal
+                simulateRateMovement();
+            }
+        }
+
+        function simulateRateMovement() {
+            const now = new Date();
+            document.getElementById('kurs-update').innerText = `Terakhir diperbarui (Simulasi): ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')} WIB`;
+            // Perbarui setiap 5 menit jika API gagal
+        }
+
+        // Jalankan saat halaman dimuat
+        fetchRealTimeRates();
+        // Perbarui setiap 1 menit
+        setInterval(fetchRealTimeRates, 60000);
+
+        function toggleSearch() {
+            const overlay = document.getElementById('searchOverlay');
+            const isVisible = overlay.style.display === 'flex';
+            overlay.style.display = isVisible ? 'none' : 'flex';
+            if (!isVisible) {
+                document.getElementById('searchInput').focus();
+                document.body.style.overflow = 'hidden'; // Stop scrolling
+            } else {
+                document.body.style.overflow = 'auto'; // Enable scrolling
+            }
+        }
+
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                const query = event.target.value.toLowerCase();
+                if (query.includes('bank') || query.includes('kode') || query.includes('daftar')) {
+                    window.location.href = 'daftar-bank.html';
+                } else if (query.includes('qris')) {
+                    window.location.href = 'deposit-qris.html';
+                } else if (query.includes('bca')) {
+                    window.location.href = 'deposit-bca.html';
+                } else {
+                    alert('Hasil pencarian untuk "' + query + '" tidak ditemukan. Coba kata kunci lain seperti "QRIS" atau "Daftar Bank".');
+                }
+            }
+        }
+
+        function calculateBonus() {
+            const amount = document.getElementById('depo-amount').value || 0;
+            const promo = document.getElementById('promo-select').value;
+            
+            const bonus = Math.floor(amount * promo);
+            const total = parseInt(amount) + bonus;
+            
+            document.getElementById('bonus-val').innerText = 'IDR ' + bonus.toLocaleString('id-ID');
+            document.getElementById('total-val').innerText = 'IDR ' + total.toLocaleString('id-ID');
+        }
+
+        // Simulasikan status bank berubah-ubah
+        setInterval(() => {
+            const banks = document.querySelectorAll('.status-dot');
+            const randomBank = banks[Math.floor(Math.random() * banks.length)];
+            // Hanya simulasi visual kedip untuk menunjukkan "live"
+            randomBank.style.opacity = '0.5';
+            setTimeout(() => randomBank.style.opacity = '1', 500);
+        }, 3000);
+    </script>
+</body>
+</html>
